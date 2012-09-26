@@ -6,6 +6,7 @@
   "dependencies": {
     "jsdom": "*",
     "request": "*",
-    "async": "*"
+    "async": "*",
+    "xml2js": "*"
   }
 }
