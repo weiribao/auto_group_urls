@@ -1,3 +1,5 @@
+var builder = require("xmlbuilder");
+
 var MAX_ITEMS = 10;
 var HASH_LENGTH = 10;
 var MAX_NUM_TOKENS = 10;
@@ -116,6 +118,42 @@ function print(node, level){
     }
 }
 exports.print = print;
+
+function printXml(node){
+    // var doc = builder.create();
+    var ele = builder.create("bookmark-list");
+    node.items.forEach(function(item){
+        var d=ele.ele("bookmark");
+        d.ele("title", item.url);
+        d.ele("url", item.url);
+    })
+    if(node.children){
+        node.children.forEach(function(child){
+            var d=ele.ele("bookmark-folder");
+            d.ele("title", child.name);
+            printXmlRecur(child, d);
+        })    
+    }
+    return ele.end({ 'pretty': true, 'indent': '  ', 'newline': '\n' });
+
+    function printXmlRecur(node, d){
+        var ele = d.ele("bookmark-list");
+        node.items.forEach(function(item){
+            var d=ele.ele("bookmark");
+            d.ele("title", item.url);
+            d.ele("url", item.url);
+        })
+        if(node.children){
+            node.children.forEach(function(child){
+                var d=ele.ele("bookmark-folder");
+                d.ele("title", child.name);
+                printXmlRecur(child, d);
+            })
+        }
+    
+    }
+}
+exports.printXml = printXml;
 
 Array.prototype.find=function(value){
     for(var i=0;i<this.length;i++){

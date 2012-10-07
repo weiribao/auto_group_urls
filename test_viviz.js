@@ -25,7 +25,8 @@ request(url, function (error, response, body) {
 
                 // var root = group.process(links.slice(99, 200));
                 var root = group.process(links);
-                group.print(root);
+                // group.print(root);
+                console.log(group.printXml(root));
         });
     }
 })
