@@ -14,7 +14,7 @@ request(url, function (error, response, body) {
             if(!err){
                 var links = getUrls(res);
                 var root = group.process(links);
-                group.print(root);         
+                console.log(group.printXml(root));         
             }
         })
     }
