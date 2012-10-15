@@ -121,7 +121,8 @@ exports.print = print;
 
 function printXml(node){
     // var doc = builder.create();
-    var ele = builder.create("bookmark-list");
+    var ele = builder.create("bookmark-list")
+                        .att("version", 1.1);
     node.items.forEach(function(item){
         var d=ele.ele("bookmark");
         d.ele("title", item.url);
@@ -137,8 +138,7 @@ function printXml(node){
     return ele.end({ 'pretty': true, 'indent': '  ', 'newline': '\n' });
 
     function printXmlRecur(node, d){
-        var ele = d.ele("bookmark-list")
-                    .att("version", 1.1);
+        var ele = d.ele("bookmark-list");
         node.items.forEach(function(item){
             var d=ele.ele("bookmark");
             d.ele("title", item.url);
