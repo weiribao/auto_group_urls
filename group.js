@@ -137,7 +137,8 @@ function printXml(node){
     return ele.end({ 'pretty': true, 'indent': '  ', 'newline': '\n' });
 
     function printXmlRecur(node, d){
-        var ele = d.ele("bookmark-list");
+        var ele = d.ele("bookmark-list")
+                    .att("version", 1.1);
         node.items.forEach(function(item){
             var d=ele.ele("bookmark");
             d.ele("title", item.url);
