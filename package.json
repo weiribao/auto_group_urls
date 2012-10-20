@@ -8,6 +8,7 @@
     "request": "*",
     "async": "*",
     "xml2js": "*",
-    "xmlbuilder": "*"
+    "xmlbuilder": "*",
+    "express": "*"
   }
 }
